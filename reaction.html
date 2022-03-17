@@ -15,7 +15,7 @@
 
   <button type="button"
   class="btn btn-primary"
-  onclick="buttonPress2()">
+  onclick="startTime()">
   Start Timer</button>
 
   <button type="button"
@@ -32,6 +32,30 @@
     console.log(myTime)
 
   }
+
+function startTime(){
+  var array = [0,1,2,3]
+  array.forEach(i => {
+    setTimeout( function(){
+      x = document.getElementById("countdown")
+      x.innerHTML = i
+    }, (3-i)*1000)//end of setTimeout
+  });//end of for loop
+  setTimeout(function(){
+    if(myTime == undefined){
+      document.getElementById("target").innerHTML = "Too Slow"
+    }
+    else{
+      var buttonTime = Date.now()
+      var dif = buttonTime - myTime
+      document.getElementById("target").innerHTML = "Time was: " + dif
+    }
+  },3000)
+ 
+
+}//end of startTime
+
+
   
   function buttonPress1() {
     setTimeout(function(){
