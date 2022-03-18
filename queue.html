@@ -32,19 +32,52 @@
 		  <div class="queue">row item 3</div>  
 		</div>
 	
-	<p> Press the button to create an new element of type div and then add it to the container.
+	<p id="test"> Press the button to create an new element of type div and then add it to the container.
 		</p>
 		<button onclick="makeNewDiv()">Add Value</button>
-	
+		<button onclick="fetchItem()">Fetch</button>
+		<button onclick="zap()">Zap Values</button>
 	
 </body>
 <script>
+
+	function zap(){
+		var x = document.getElementById("test")
+		var counter = 0
+		var queueItems = document.getElementsByClassName("queue")
+		var inputVal = document.getElementById("input").value
+		for (const i of queueItems) {
+			if(i.innerHTML == inputVal){
+				queueItems[counter].remove(i)
+			}
+			counter += 1
+		}
+	}
+
+
+	function fetchItem(){
+		var x = document.getElementById("test")
+      	x.innerHTML = "test"
+		var queueItems = document.getElementsByClassName("queue")
+		x.innerHTML = "test2"
+		var qLength = queueItems.length
+		x.innerHTML = "test3"
+		x.innerHTML = qLength
+		if(qLength > 0){
+			queueItems[qLength-1].remove()
+		}
+		x.innerHTML = "test4"
+	}
+
+
+
+
 	function makeNewDiv(){
 		/* make the div and its text */
 		let element = document.createElement("div")
 		element.innerHTML = document.getElementById("input").value
 		element.style.color = "orange"
-		element.class = "queue"
+		element.className = "queue"
 
 		/* add it to the container */
 		let container = document.getElementById('target')
