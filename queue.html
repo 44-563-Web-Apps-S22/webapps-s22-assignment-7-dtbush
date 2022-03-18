@@ -49,6 +49,7 @@
 		for (const i of queueItems) {
 			if(i.innerHTML == inputVal){
 				queueItems[counter].remove(i)
+				console.log("removed: "+i.innerHTML)
 			}
 			counter += 1
 		}
